@@ -1,0 +1,25 @@
+{
+  "name": "js-hw-31",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimurG1/JS-HW-31.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TimurG1/JS-HW-31/issues"
+  },
+  "homepage": "https://github.com/TimurG1/JS-HW-31#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4",
+    "parcel-transformer-handlebars": "^1.0.0",
+    "parcel-transformer-hbs": "^1.0.4"
+  }
+}
