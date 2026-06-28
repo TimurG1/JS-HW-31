@@ -715,17 +715,28 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 
 },{}],"jOXmm":[function(require,module,exports,__globalThis) {
 var _productJs = require("./src/js/product.js");
+var _formJs = require("./src/js/form.js");
 
-},{"./src/js/product.js":"aQbEY"}],"aQbEY":[function(require,module,exports,__globalThis) {
+},{"./src/js/product.js":"aQbEY","./src/js/form.js":"izK3G"}],"aQbEY":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _dataJs = require("./data.js");
 var _productsHbs = require("../templates/products.hbs");
 var _productsHbsDefault = parcelHelpers.interopDefault(_productsHbs);
+const searchInput = document.getElementById("searchInput");
 const container = document.querySelector(".content");
 const listMarkup = (0, _productsHbsDefault.default)({
     products: (0, _dataJs.products)
 });
 container.innerHTML = listMarkup;
+searchInput.addEventListener("input", onSearch);
+function onSearch() {
+    const query = searchInput.value.toLowerCase();
+    const newArr = (0, _dataJs.products).filter((product)=>product.name.toLowerCase().includes(query));
+    const newListMarkup = (0, _productsHbsDefault.default)({
+        products: newArr
+    });
+    container.innerHTML = newListMarkup;
+}
 
 },{"./data.js":"a4kWt","../templates/products.hbs":"dZaV6","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"a4kWt":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -793,63 +804,49 @@ const templateFunction = (0, _handlebarsDefault.default).template({
             if (Object.prototype.hasOwnProperty.call(parent, propertyName)) return parent[propertyName];
             return undefined;
         };
-        return "    <li>\r\n        id:" + alias4((helper = (helper = lookupProperty(helpers, "id") || (depth0 != null ? lookupProperty(depth0, "id") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
-            "name": "id",
-            "hash": {},
-            "data": data,
-            "loc": {
-                "start": {
-                    "line": 5,
-                    "column": 11
-                },
-                "end": {
-                    "line": 5,
-                    "column": 17
-                }
-            }
-        }) : helper)) + "\r\n        name:" + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+        return "    <li>\r\n      <h2 class=\"name\">" + alias4((helper = (helper = lookupProperty(helpers, "name") || (depth0 != null ? lookupProperty(depth0, "name") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
             "name": "name",
             "hash": {},
             "data": data,
             "loc": {
                 "start": {
-                    "line": 6,
-                    "column": 13
+                    "line": 5,
+                    "column": 23
                 },
                 "end": {
-                    "line": 6,
-                    "column": 21
+                    "line": 5,
+                    "column": 31
                 }
             }
-        }) : helper)) + "\r\n        price:" + alias4((helper = (helper = lookupProperty(helpers, "price") || (depth0 != null ? lookupProperty(depth0, "price") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+        }) : helper)) + "</h2>\r\n      <p class=\"price\">Price:" + alias4((helper = (helper = lookupProperty(helpers, "price") || (depth0 != null ? lookupProperty(depth0, "price") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
             "name": "price",
             "hash": {},
             "data": data,
             "loc": {
                 "start": {
-                    "line": 7,
-                    "column": 14
+                    "line": 6,
+                    "column": 29
                 },
                 "end": {
-                    "line": 7,
-                    "column": 23
+                    "line": 6,
+                    "column": 38
                 }
             }
-        }) : helper)) + "\r\n        description:" + alias4((helper = (helper = lookupProperty(helpers, "description") || (depth0 != null ? lookupProperty(depth0, "description") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
+        }) : helper)) + "</p>\r\n      <p class=\"description\">" + alias4((helper = (helper = lookupProperty(helpers, "description") || (depth0 != null ? lookupProperty(depth0, "description") : depth0)) != null ? helper : alias2, typeof helper === alias3 ? helper.call(alias1, {
             "name": "description",
             "hash": {},
             "data": data,
             "loc": {
                 "start": {
-                    "line": 8,
-                    "column": 20
+                    "line": 7,
+                    "column": 29
                 },
                 "end": {
-                    "line": 8,
-                    "column": 35
+                    "line": 7,
+                    "column": 44
                 }
             }
-        }) : helper)) + "\r\n    </li>\r\n";
+        }) : helper)) + "</p>\r\n    </li>\r\n";
     },
     "compiler": [
         8,
@@ -869,14 +866,14 @@ const templateFunction = (0, _handlebarsDefault.default).template({
             "loc": {
                 "start": {
                     "line": 3,
-                    "column": 4
+                    "column": 2
                 },
                 "end": {
-                    "line": 10,
-                    "column": 13
+                    "line": 9,
+                    "column": 11
                 }
             }
-        })) != null ? stack1 : "") + "</ul>";
+        })) != null ? stack1 : "") + "</ul>\r\n";
     },
     "useData": true
 });
@@ -12097,6 +12094,29 @@ var isSourceNode = "$$$isSourceNode$$$";
 };
 exports.SourceNode = SourceNode;
 
-},{"a07d2c2c4b11c39f":"fWPsq","18d5ff036a08fa06":"5Iq0C"}]},["kxwl6","jOXmm"], "jOXmm", "parcelRequiredc46", {})
+},{"a07d2c2c4b11c39f":"fWPsq","18d5ff036a08fa06":"5Iq0C"}],"izK3G":[function(require,module,exports,__globalThis) {
+const bookmarkInput = document.getElementById("bookmarkInput");
+const bookmarkList = document.getElementById("bookmarkList");
+const addBookmarkBtn = document.getElementById("addBookmarkBtn");
+function createEl(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text) node.textContent = text;
+    if (tag === "a") node.href = text;
+    return node;
+}
+addBookmarkBtn.addEventListener("click", onAddBookmarkBtnClick);
+function onAddBookmarkBtnClick(e) {
+    const bookmarkItem = createEl("li", "bookmarkItem", "");
+    const removeBtn = createEl("button", "remove", "X");
+    const bookmarkLink = createEl("a", "bookmarkLink", bookmarkInput.value);
+    bookmarkItem.append(bookmarkLink, removeBtn);
+    bookmarkList.append(bookmarkItem);
+}
+bookmarkList.addEventListener("click", (e)=>{
+    if (e.target.classList.contains("remove")) e.target.parentElement.remove();
+});
+
+},{}]},["kxwl6","jOXmm"], "jOXmm", "parcelRequiredc46", {})
 
 //# sourceMappingURL=JS-HW-31.e02fbd41.js.map
